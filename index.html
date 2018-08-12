@@ -39,10 +39,10 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        //var overlay_BingSatellite_0 = L.tileLayer('http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n'', {
+        var overlay_hiking = L.tileLayer('https://israelhiking.osm.org.il/Hebrew/Tiles/{z}/{x}/{y}.png', {
         //t    
-        //    opacity: 1.0
-        //});
+            opacity: 1.0
+        });
         //overlay_BingSatellite_0.addTo(map);
         
         var overlay_PEF_1 = L.tileLayer('https://palopenmaps.org/tiles/pal63k-1880/{z}/{x}/{y}.jpg', {
@@ -51,17 +51,9 @@
         });
         //overlay_PEF_1.addTo(map);
         
-        var overlay_OSMStandard_2 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            
-            opacity: 1.0
-        });
-        //overlay_OSMStandard_2.addTo(map);
         
-        var overlay_OpenTopoMap_3 = L.tileLayer('https://a.tile.opentopomap.org/{z}/{x}/{y}.png', {
-            
-            opacity: 1.0
-        });
-        //overlay_OpenTopoMap_3.addTo(map);
+        
+        
         
         var overlay_194020K_4 = L.tileLayer('https://palopenmaps.org/tiles/pal20k-1940s/{z}/{x}/{y}.jpg', {
             
@@ -81,10 +73,9 @@
         var baseMaps = {
             "וויז": overlay_WazeIsrael_5 ,
             "בריטית": overlay_194020K_4,
-             "overlay_OpenTopoMap_3": overlay_OpenTopoMap_3 ,
-            "overlay_OSMStandard_2": overlay_OSMStandard_2,
-             "overlay_PEF_1": overlay_PEF_1 ,
-            //"overlay_BingSatellite_0": overlay_BingSatellite_0
+            
+             "PEF": overlay_PEF_1 ,
+            "סימון שבילים": overlay_hiking
         };
         //var groupedOverlays = {
         //},
