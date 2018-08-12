@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[33.175870403114104,35.525161337042725],[33.23389207379639,35.6506682905585]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        //var overlay_BingSatellite_0 = L.tileLayer('http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n'', {
+            
+        //    opacity: 1.0
+        //});
+        //overlay_BingSatellite_0.addTo(map);
+        
+        var overlay_PEF_1 = L.tileLayer('https://palopenmaps.org/tiles/pal63k-1880/{z}/{x}/{y}.jpg', {
+            
+            opacity: 1.0
+        });
+        //overlay_PEF_1.addTo(map);
+        
+        var overlay_OSMStandard_2 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            
+            opacity: 1.0
+        });
+        //overlay_OSMStandard_2.addTo(map);
+        
+        var overlay_OpenTopoMap_3 = L.tileLayer('https://a.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            
+            opacity: 1.0
+        });
+        //overlay_OpenTopoMap_3.addTo(map);
+        
+        var overlay_194020K_4 = L.tileLayer('https://palopenmaps.org/tiles/pal20k-1940s/{z}/{x}/{y}.jpg', {
+            
+            opacity: 1.0
+        });
+        //overlay_194020K_4.addTo(map);
+        
+        var overlay_WazeIsrael_5 = L.tileLayer('https://il-livemap-tiles3.waze.com/tiles/{z}/{x}/{y}.png', {
+            
+            opacity: 1.0
+        });
+
+        overlay_WazeIsrael_5.addTo(map);
+        map.addLayer(overlay_WazeIsrael_5);
+        setBounds();
+        
+        var baseMaps = {
+            "וויז": overlay_WazeIsrael_5 ,
+            "בריטית": overlay_194020K_4,
+             "overlay_OpenTopoMap_3": overlay_OpenTopoMap_3 ,
+            "overlay_OSMStandard_2": overlay_OSMStandard_2,
+             "overlay_PEF_1": overlay_PEF_1 ,
+            //"overlay_BingSatellite_0": overlay_BingSatellite_0
+        };
+        //var groupedOverlays = {
+        //},
+       
+ 
+        //var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays);
+        L.control.layers(baseMaps,).addTo(map);
+        //map.addControl(layerControl);
+        </script>
+    </body>
+</html>
