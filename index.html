@@ -120,7 +120,7 @@
         gps.addTo(map);
         
        function pop_FAQ_1(feature, layer) {
-            var popupContent = ('<a href="https://api.whatsapp.com/send?phone=972524606560" target="_blank">Send Message</a> ')
+            var popupContent = ('<a href="https://api.whatsapp.com/send?phone=972524606560" target="_blank">'+ (feature.properties['Question'] !== null ? Autolinker.link(String(feature.properties['Question'])) : '') + '</a> ')
             
             //(feature.properties['Question'] !== null ? Autolinker.link(String(feature.properties['Question'])) : '')
                    ;
