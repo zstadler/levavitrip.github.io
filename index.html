@@ -8,6 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/leaflet-gps.css" />
         <style>
         html, body, #map {
             width: 100%;
@@ -30,11 +31,20 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
+        <script src="js/leaflet-gps.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[33.175870403114104,35.525161337042725],[33.23389207379639,35.6506682905585]]);
         var hash = new L.Hash(map);
+        var MantzurIcon = L.icon({
+            iconUrl: 'logo1.png',
+            iconSize:     [80, 100], // size of the icon   
+            iconAnchor:   [22, 94], //[22, 94] point of the icon which will correspond to marker's location            
+        });
+        var Mantzur =L.marker([33.04187,35.56036], {icon: MantzurIcon});//34.68909,31.70245
+        map.addLayer(Mantzur);
+        
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
@@ -84,6 +94,21 @@
         //var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays);
         L.control.layers(baseMaps,).addTo(map);
         //map.addControl(layerControl);
+        var gps = new L.Control.Gps({
+		//autoActive:true,
+		autoCenter:true
+        });//inizialize control
+
+        gps
+        .on('gps:located', function(e) {
+            //	e.marker.bindPopup(e.latlng.toString()).openPopup()
+            console.log(e.latlng, map.getCenter())
+        })
+        .on('gps:disabled', function(e) {
+            e.marker.closePopup()
+        });
+
+        gps.addTo(map);
         </script>
     </body>
 </html>
