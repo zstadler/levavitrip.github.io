@@ -456,8 +456,9 @@
 
 .leaflet-popup {
 	position: absolute;
-	text-align: center;
+	text-align: right;
 	margin-bottom: 20px;
+    direction: rtl;
 	}
 .leaflet-popup-content-wrapper {
 	padding: 1px;
@@ -505,7 +506,7 @@
 	right: 0;
 	padding: 4px 4px 0 0;
 	border: none;
-	text-align: center;
+	text-align: right;
 	width: 18px;
 	height: 14px;
 	font: 16px/14px Tahoma, Verdana, sans-serif;

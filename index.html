@@ -32,6 +32,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-gps.js"></script>
+        <script src="js/L.Control.Window.js"></script>
+        <script src="js/leaflet.groupedlayercontrol.js"></script>
         <script src="data/FAQ_1.js"></script>
         <script src="data/Info_2.js"></script>
         <script>
@@ -89,21 +91,7 @@
         map.addLayer(overlay_WazeIsrael_5);
         setBounds();
         
-        var baseMaps = {
-            "וויז": overlay_WazeIsrael_5 ,
-            "מפה בריטית 1940": overlay_194020K_4,
-            
-             "PEF 1880": overlay_PEF_1 ,
-            "סימון שבילים": overlay_hiking,
-            "לווין":satellite
-        };
-        //var groupedOverlays = {
-        //},
-       
- 
-        //var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays);
-        L.control.layers(baseMaps,).addTo(map);
-        //map.addControl(layerControl);
+        
         var gps = new L.Control.Gps({
 		//autoActive:true,
 		autoCenter:true
@@ -215,6 +203,39 @@
         bounds_group.addLayer(layer_Info_2);
         map.addLayer(layer_Info_2);
         setBounds();
+        
+        var baseMaps = {
+            "וויז": overlay_WazeIsrael_5 ,
+            "מפה בריטית 1940": overlay_194020K_4,
+            
+             "PEF 1880": overlay_PEF_1 ,
+            "סימון שבילים": overlay_hiking,
+            "לווין":satellite
+        };
+        //var groupedOverlays = {
+        //},
+      var mapControlsContainer = document.getElementsByClassName("leaflet-control")[0]; 
+      var groupedOverlays = {
+              "מידע נוסף": {
+                "שאלות": layer_FAQ_1,
+                "הידעת?":layer_Info_2,
+                "מנצור":Mantzur,
+               
+              },
+              //"שכבות נוספות": {
+                
+                //}
+            };
+            var options = {
+          // Make the "Landmarks" group exclusive (use radio inputs)
+          //exclusiveGroups: ["שכבות נוספות"],
+          // Show a checkbox next to non-exclusive group labels for toggling all
+          groupCheckboxes: true
+           };
+        //var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays);
+        var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays, options);
+        map.addControl(layerControl);
+        //map.addControl(layerControl);
         </script>
     </body>
 </html>
