@@ -34,6 +34,7 @@
         <script src="js/leaflet-gps.js"></script>
         <script src="js/L.Control.Window.js"></script>
         <script src="js/leaflet.groupedlayercontrol.js"></script>
+        <script src="js/leaflet-control-credits.js"></script>
         <script src="data/FAQ_1.js"></script>
         <script src="data/Info_2.js"></script>
         <script>
@@ -236,6 +237,14 @@
         var layerControl = L.control.groupedLayers(baseMaps, groupedOverlays, options);
         map.addControl(layerControl);
         //map.addControl(layerControl);
+        
+        var credctrl = L.controlCredits({
+            image: "images/logo.jpg",
+            link: " ",
+            text: " ",
+            width: 120,
+            height: 65
+        }).addTo(map);
         </script>
     </body>
 </html>
